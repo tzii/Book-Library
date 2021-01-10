@@ -22,6 +22,7 @@ namespace BookLibrary.ViewModels
         private bool owned, canBuy;
         public Command LoadPage { get; }
         public Command BuyClicked { get; }
+        public Command BackClicked { get; }
         public Command<Chapter> ChapterClicked { get; }
         public string Id
         {
@@ -82,6 +83,7 @@ namespace BookLibrary.ViewModels
             LoadPage = new Command(excuteLoadPageCommand);
             BuyClicked = new Command(excuteBuyClicked);
             ChapterClicked = new Command<Chapter>(excuteChapterClicked);
+            BackClicked = new Command(onBackClicked);
         }
         private async void excuteLoadPageCommand()
         {
@@ -136,6 +138,10 @@ namespace BookLibrary.ViewModels
             if (chapter == null) return;
             if (!Owned) await Shell.Current.DisplayAlert("Thông Báo!", "Bạn chưa sở hữu quyển sách này.", "OK");
             await Shell.Current.DisplayAlert("Thông Báo!", chapter._id, "OK");
+        }
+        private async void onBackClicked()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

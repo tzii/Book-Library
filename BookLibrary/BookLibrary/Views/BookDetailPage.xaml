@@ -55,10 +55,15 @@
                                        Margin="20,220,0,0" 
                                        Shadow="{yummy:ShadowMarkup }" CornerRadius="100">
                         <StackLayout>
-                            <Button Text="{Binding Price,StringFormat='{0} VNĐ'}" CornerRadius="100" BackgroundColor="#fdd978" ImageSource="cart.png"
+                            <Button Text="{Binding Price,StringFormat='{0:N0} VNĐ'}" CornerRadius="100" BackgroundColor="#fdd978" ImageSource="cart.png"
                                     IsVisible="{Binding CanBuy}" Command="{Binding BuyClicked}"/>
                             <Button Text="Đã sở hữu" CornerRadius="100" BackgroundColor="#fdd978" ImageSource="cart2.png" IsVisible="{Binding Owned}"/>
                         </StackLayout>
+                    </yummy:PancakeView>
+                    <yummy:PancakeView HorizontalOptions="Start" VerticalOptions="Start" Margin="15"
+                        Shadow="{yummy:ShadowMarkup }" CornerRadius="25">
+                        <Button ImageSource="arrow.png" Command="{Binding BackClicked}" VerticalOptions="Start" HorizontalOptions="Start" BackgroundColor="#fdd978"
+                                 WidthRequest="50" HeightRequest="50" CornerRadius="25"/>
                     </yummy:PancakeView>
                 </Grid>
             </ScrollView>

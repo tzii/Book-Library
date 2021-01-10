@@ -5,6 +5,7 @@ using System.Text;
 using BookLibrary.Services;
 using Xamarin.Forms;
 using BookLibrary.Models;
+using BookLibrary.Views;
 
 namespace BookLibrary.ViewModels
 {
@@ -17,6 +18,8 @@ namespace BookLibrary.ViewModels
         private string id, name, image, description;
         private List<Book> books;
         public Command LoadPage { get; }
+        public Command BackClicked { get; }
+        public Command<Book> BookClicked { get; }
         public string Id 
         {
             get { return id; }
@@ -48,6 +51,8 @@ namespace BookLibrary.ViewModels
         public CategoryDetailViewModel()
         {
             LoadPage = new Command(excuteLoadPageCommand);
+            BookClicked = new Command<Book>(onBookClicked);
+            BackClicked = new Command(onBackClicked);
         }
         private async void excuteLoadPageCommand()
         {
@@ -63,6 +68,15 @@ namespace BookLibrary.ViewModels
             {
                 IsBusy = false;
             }
+        }
+        private async void onBookClicked(Book book)
+        {
+            if (book == null) return;
+            await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.Id)}={book._id}&{nameof(BookDetailViewModel.Name)}={book.name}&{nameof(BookDetailViewModel.Image)}={book.image}&{nameof(BookDetailViewModel.Price)}={book.price}");
+        }
+        private async void onBackClicked()
+        {
+            await Shell.Current.GoToAsync("..");
         }
         public void OnAppearing()
         {

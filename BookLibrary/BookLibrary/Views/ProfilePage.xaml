@@ -4,23 +4,17 @@
              xmlns:services ="clr-namespace:BookLibrary.Services" 
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="BookLibrary.Views.ProfilePage">
-    <ContentPage.Content>
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
         <Grid>
-            <yummy:PancakeView BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,1" HeightRequest="200" Background="avatar.png">
-                <yummy:PancakeView.BackgroundGradientStops>
-                    <yummy:GradientStopCollection>
-                        <yummy:GradientStop Color="#12a58b" Offset="0" />
-                        <yummy:GradientStop Color="#1e96c8" Offset="1" />
-                    </yummy:GradientStopCollection>
-                </yummy:PancakeView.BackgroundGradientStops>
+            <yummy:PancakeView HeightRequest="200" Background="avatar.png">
                 <Image Source="cover.jpg" VerticalOptions="Start" />
             </yummy:PancakeView>
             <yummy:PancakeView Margin="0,180,0,0" BackgroundColor="white" CornerRadius="20,20,0,0"
                                Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10'}" >
                 <StackLayout Margin="0,100,0,0">
-                    <Label Text="{Binding Source={x:Static services:UserService.Balance},StringFormat='{0:N0} Đồng'}"
+                    <Label Text="{Binding Balance,StringFormat='{0:N0} VNĐ'}"
                            HorizontalOptions="Center"
-                           TextColor="#12a58b"
+                           TextColor="#fdd978"
                            FontSize="Title"
                            FontAttributes="Bold"/>
                     <Grid Margin="20,50,20,0">
@@ -29,13 +23,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="Name:" />
-                        <Label Text="{Binding Source={x:Static services:UserService.Name}}" Grid.Column="1" TextColor="DarkOrange" FontAttributes="Bold"/>
+                        <Label Text="{Binding Name}" Grid.Column="1" FontAttributes="Bold"/>
                         <Label Text="Email:" Grid.Row="1"/>
-                        <Label Text="{x:Static services:UserService.Email}" Grid.Row="1" Grid.Column="1" TextColor="DarkOrange" FontAttributes="Bold"/>
+                        <Label Text="{Binding Email}" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"/>
                     </Grid>
-
                 </StackLayout>
-
             </yummy:PancakeView>
             <yummy:PancakeView Margin="0,90,0,0"
                                CornerRadius="1000" 
@@ -45,11 +37,11 @@
                                HorizontalOptions="Center" 
                                VerticalOptions="Start"
                                Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10'}" 
-                               Border="{yummy:BorderMarkup Color=#f9fafa, Thickness='10'}">
+                               Border="{yummy:BorderMarkup Color=#fdd978, Thickness='10'}">
                 <Image Source="avatar.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
             </yummy:PancakeView>
             <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="50" Margin="10" 
-                                 VerticalOptions="Start" HorizontalOptions="End" Clicked="ImageButton_Clicked"/>
+                                 VerticalOptions="Start" HorizontalOptions="End" Command="{Binding LogoutClicked}"/>
         </Grid>
-    </ContentPage.Content>
+    </RefreshView>
 </ContentPage>

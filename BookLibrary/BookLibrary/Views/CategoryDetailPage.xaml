@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:model="clr-namespace:BookLibrary.ViewModels"
              x:Class="BookLibrary.Views.CategoryDetailPage">
     <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
         <Grid>
@@ -34,6 +35,12 @@
                                                     <StackLayout Margin="10">
                                                         <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
                                                     </StackLayout>
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:CategoryDetailViewModel}}, Path=BookClicked}"		
+                                            CommandParameter="{Binding .}">
+                                                        </TapGestureRecognizer>
+                                                    </Grid.GestureRecognizers>
                                                 </Grid>
                                             </yummy:PancakeView>
                                         </StackLayout>
@@ -44,8 +51,13 @@
                     </yummy:PancakeView>
                     <yummy:PancakeView BackgroundColor="#fdd978" HorizontalOptions="Start" VerticalOptions="Start"
                                        Margin="20,220,0,0" Padding="20,10"
-                                       Shadow="{yummy:ShadowMarkup }" CornerRadius="100">
+                                       Shadow="{yummy:ShadowMarkup }" CornerRadius="25">
                         <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
+                    </yummy:PancakeView>
+                    <yummy:PancakeView HorizontalOptions="Start" VerticalOptions="Start" Margin="15"
+                        Shadow="{yummy:ShadowMarkup }" CornerRadius="25">
+                        <Button ImageSource="arrow.png" Command="{Binding BackClicked}" VerticalOptions="Start" HorizontalOptions="Start" BackgroundColor="#fdd978"
+                                 WidthRequest="50" HeightRequest="50" CornerRadius="25"/>
                     </yummy:PancakeView>
                 </Grid>
             </ScrollView>
