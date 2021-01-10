@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:model="clr-namespace:BookLibrary.ViewModels"
+             x:Class="BookLibrary.Views.BookDetailPage">
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
+        <Grid>
+            <StackLayout VerticalOptions="Start" HeightRequest="400" BackgroundColor="black">
+                <ff:CachedImage VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                Aspect="AspectFill" Opacity="0.7"
+                                Source="{Binding Image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+            </StackLayout>
+            <ScrollView>
+                <Grid>
+                    <yummy:PancakeView BackgroundColor="#f5f9fc" Margin="0,250,0,0"
+                                   Shadow="{yummy:ShadowMarkup }" CornerRadius="20,20,0,0">
+                        <StackLayout Padding="0,50,0,0">
+                            <Label Text="{Binding Name}" Margin="15,0,15,20" FontSize="Large" FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal" Margin="15,0" HorizontalOptions="FillAndExpand">
+                                <Label Text="Tác Giả: "  FontAttributes="Bold"/>
+                                <Label Text="{Binding Author}" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                            <Label Text="Giới thiệu:" FontAttributes="bold" Margin="15,0"/>
+                            <Label Text="{Binding Description}" Margin="15,0"/>
+                            <Label Text="Danh Sách Chương" Margin="15,30,0,20" FontSize="20" FontAttributes="Bold"/>
+                            <CollectionView ItemsSource="{Binding Chapters}" HeightRequest="400" VerticalOptions="Start">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <yummy:PancakeView  Padding="15,7.5,15,20" >
+                                            <yummy:PancakeView BackgroundColor="#fdd978" Padding="10,10" Shadow="{yummy:ShadowMarkup }" CornerRadius="20">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type model:BookDetailViewModel}}, Path=ChapterClicked}"		
+                                                                                CommandParameter="{Binding .}">
+                                                        </TapGestureRecognizer>
+                                                    </Grid.GestureRecognizers>
+                                                    <Label Text="{Binding number,StringFormat='Chương {0}:'}"/>
+                                                    <Label Text="{Binding name}" Grid.Column="1"/>
+                                                </Grid>
+                                            </yummy:PancakeView>
+                                        </yummy:PancakeView>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                    <yummy:PancakeView BackgroundColor="#fdd978" HorizontalOptions="Start" VerticalOptions="Start"
+                                       Margin="20,220,0,0" 
+                                       Shadow="{yummy:ShadowMarkup }" CornerRadius="100">
+                        <StackLayout>
+                            <Button Text="{Binding Price,StringFormat='{0} VNĐ'}" CornerRadius="100" BackgroundColor="#fdd978" ImageSource="cart.png"
+                                    IsVisible="{Binding CanBuy}" Command="{Binding BuyClicked}"/>
+                            <Button Text="Đã sở hữu" CornerRadius="100" BackgroundColor="#fdd978" ImageSource="cart2.png" IsVisible="{Binding Owned}"/>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </RefreshView>
+</ContentPage>

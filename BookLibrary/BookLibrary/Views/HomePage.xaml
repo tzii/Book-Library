@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:model="clr-namespace:BookLibrary.ViewModels"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BookLibrary.Views.HomePage">
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
+        <ScrollView BackgroundColor="#f5f9fc">
+            <StackLayout>
+                <StackLayout BackgroundColor="#fdd978">
+                    <Label Text="{Binding Name,StringFormat='Chào, {0}'}" 
+                   FontAttributes="Bold" FontSize="Large"
+                   Margin="15,30,15,0"/>
+                    <Label Text="Tìm cuốn sách yêu thích của bạn và tận hưởng"
+                   FontSize="Medium" Margin="15,0,15,0"/>
+                    <Label Text="Recommended" FontSize="Large" FontAttributes="Bold" Margin="15,20,15,0"/>
+                    <CarouselView ItemsSource="{Binding Recommended}" HeightRequest="250" PeekAreaInsets="100">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,10,0,30">
+                                    <yummy:PancakeView HeightRequest="210" WidthRequest="140" 
+                                                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                                   Shadow="{yummy:ShadowMarkup }"
+                                                   CornerRadius="20">
+                                        <Grid>
+                                            <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                                <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                            Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                            </StackLayout>
+                                            <StackLayout Margin="10">
+                                                <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:HomeViewModel}}, Path=BookClicked}"		
+                                            CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </yummy:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </StackLayout>
+                <StackLayout Margin="0,30,0,0">
+                    <Grid Margin="20,0">
+                        <Label Text="New Books" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" />
+                        <Button Text="See all" HorizontalOptions="End" TextColor="#1c73d7"
+                            FontAttributes="Bold" TextTransform="None"
+                            FontSize="16" BackgroundColor="Transparent"
+                            Command="{Binding GotoAllBookPage}"/>
+                    </Grid>
+                    <CarouselView ItemsSource="{Binding NewBooks}" HeightRequest="250" PeekAreaInsets="100">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,10,0,30">
+                                    <yummy:PancakeView HeightRequest="210" WidthRequest="140" 
+                                                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                                Shadow="{yummy:ShadowMarkup }"
+                                                CornerRadius="20">
+                                        <Grid>
+                                            <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                                <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                        Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                            </StackLayout>
+                                            <StackLayout Margin="10">
+                                                <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:HomeViewModel}}, Path=BookClicked}"		
+                                            CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </yummy:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </StackLayout>
+                <StackLayout Margin="0,20,0,0">
+                    <Grid  Margin="20,0">
+                        <Label Text="Categories" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" />
+                        <Button Text="See all" HorizontalOptions="End" TextColor="#1c73d7"
+                            FontAttributes="Bold" TextTransform="None"
+                            FontSize="16" BackgroundColor="Transparent"
+                            Command="{Binding GotoCategoriesPage}"/>
+                    </Grid>
+                    <CarouselView ItemsSource="{Binding TopCategories}" HeightRequest="250" PeekAreaInsets="100">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,10,0,30">
+                                    <yummy:PancakeView HeightRequest="210" WidthRequest="140" 
+                                                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                                Shadow="{yummy:ShadowMarkup }"
+                                                CornerRadius="20">
+                                        <Grid>
+                                            <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                                <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                        Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                            </StackLayout>
+                                            <StackLayout Margin="10">
+                                                <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:HomeViewModel}}, Path=CategoryClicked}"		
+                                            CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </yummy:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

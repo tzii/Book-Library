@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BookLibrary.Views.BooksPage">
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
+        <StackLayout BackgroundColor="#f5f9fc">
+            <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding Books}" 
+                            ItemsLayout="VerticalGrid, 2" VerticalScrollBarVisibility="Always" 
+                            ItemSizingStrategy="MeasureFirstItem">
+                <CollectionView.Header>
+                    <ContentView>
+                        <Label Text="Categories" FontSize="Large" FontAttributes="Bold" Margin="15,20,15,20"/>
+                    </ContentView>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <yummy:PancakeView Padding="7.5,0" HeightRequest="250">
+                            <yummy:PancakeView Shadow="{yummy:ShadowMarkup }" CornerRadius="20" Margin="7.5,10,7.5,20">
+                                <Grid>
+                                    <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                        <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                            Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="10">
+                                        <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </yummy:PancakeView>
+                        </yummy:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </RefreshView>
+</ContentPage>

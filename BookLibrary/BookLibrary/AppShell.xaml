@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BookLibrary.Views"
+             x:Class="BookLibrary.AppShell"
+             Shell.TabBarTitleColor="#3e3e3e"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarBackgroundColor="white"
+             Shell.TabBarUnselectedColor="#ababab">
+    <ShellContent ContentTemplate="{DataTemplate local:LoadingPage}"/>
+    <TabBar>
+        <ShellContent Route="SigninPage" ContentTemplate="{DataTemplate local:SigninPage}"/>
+        <ShellContent Route="SignupPage" ContentTemplate="{DataTemplate local:SignupPage}"/>
+    </TabBar>
+    <TabBar>
+        <ShellContent Title="Home" Icon="home.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}"/>
+        <ShellContent Title="Categories" Icon="category.png" Route="CategoriesPage" ContentTemplate="{DataTemplate local:CategoriesPage}"/>
+        <ShellContent Title="All books" Icon="books.png" Route="BooksPage" ContentTemplate="{DataTemplate local:BooksPage}"/>
+        <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}"/>
+    </TabBar>
+</Shell>

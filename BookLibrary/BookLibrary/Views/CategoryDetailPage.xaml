@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="BookLibrary.Views.CategoryDetailPage">
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
+        <Grid>
+            <StackLayout VerticalOptions="Start" HeightRequest="400" BackgroundColor="black">
+                <ff:CachedImage VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                Aspect="AspectFill" Opacity="0.7"
+                                Source="{Binding Image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+            </StackLayout>
+            <ScrollView>
+                <Grid>
+                    <yummy:PancakeView BackgroundColor="#f5f9fc" Margin="0,250,0,0"
+                                   Shadow="{yummy:ShadowMarkup }" CornerRadius="20,20,0,0">
+                        <StackLayout Padding="0,50,0,0">
+                            <Label Text="{Binding Description}" Margin="15,0"/>
+                            <Label Text="{Binding Name,StringFormat='Truyện {0}'}" Margin="15,30,0,0" FontSize="20" FontAttributes="Bold"/>
+                            <CarouselView ItemsSource="{Binding Books}" HeightRequest="250" PeekAreaInsets="100">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Padding="0,10,0,30">
+                                            <yummy:PancakeView HeightRequest="210" WidthRequest="140" 
+                                                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                                   Shadow="{yummy:ShadowMarkup }"
+                                                   CornerRadius="20">
+                                                <Grid>
+                                                    <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                                        <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                            Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                                    </StackLayout>
+                                                    <StackLayout Margin="10">
+                                                        <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </yummy:PancakeView>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                    <yummy:PancakeView BackgroundColor="#fdd978" HorizontalOptions="Start" VerticalOptions="Start"
+                                       Margin="20,220,0,0" Padding="20,10"
+                                       Shadow="{yummy:ShadowMarkup }" CornerRadius="100">
+                        <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
+                    </yummy:PancakeView>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </RefreshView>
+</ContentPage>

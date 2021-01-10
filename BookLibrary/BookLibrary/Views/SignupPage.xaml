@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:components="clr-namespace:BookLibrary.Components" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="BookLibrary.Views.SignupPage"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#28dbc5" Offset="0"/>
+            <GradientStop Color="#83c9f5" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <yummy:PancakeView Background="{StaticResource BlueGradient}">
+            <StackLayout>
+                <ffsvg:SvgCachedImage Source="login.svg" HeightRequest="80" Margin="0,40,0,100"/>
+                <components:CustomEntry 
+                    Text ="{Binding Name}"
+                    TextColor="white"
+                    BorderWidth="2" 
+                    BorderColor="white"
+                    Placeholder="Tên" 
+                    PlaceholderColor="#dcebeb"
+                    CornerRadius="100"
+                    IsCurvedCornersEnabled="True"
+                    Margin="20,0"/>
+                <components:CustomEntry 
+                    Text ="{Binding Email}"
+                    TextColor="white"
+                    BorderWidth="2" 
+                    BorderColor="white"
+                    Placeholder="Địa chỉ Email" 
+                    PlaceholderColor="#dcebeb"
+                    CornerRadius="100"
+                    IsCurvedCornersEnabled="True"
+                    Margin="20,10,20,0"/>
+                <components:CustomEntry 
+                    Text="{Binding Password}"
+                    BorderWidth="2" 
+                    TextColor="white"
+                    BorderColor="white"
+                    Placeholder="Mật khẩu" 
+                    PlaceholderColor="#dcebeb"
+                    CornerRadius="100" 
+                    Margin="20,10,20,0"/>
+                <Button Command="{Binding SignupCommand}"
+                        Text="Đăng Kí" 
+                        BackgroundColor="white" 
+                        CornerRadius="100" 
+                        Margin="20,50,20,0" 
+                        TextTransform="None" 
+                        TextColor="#83c9f5" 
+                        FontAttributes="Bold"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                <Grid VerticalOptions="EndAndExpand">
+                    <Button Text="Đăng Nhập" 
+                            Command="{Binding SigninViewComand}"
+                            TextColor="#dcebeb"
+                            FontAttributes="Bold"
+                            TextTransform="None"
+                            FontSize="12"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="StartAndExpand"/>
+                    <Button Text="Trợ Giúp?"
+                            TextColor="#dcebeb"
+                            FontAttributes="Bold"
+                            TextTransform="None"
+                            FontSize="12" 
+                            BackgroundColor="Transparent" 
+                            HorizontalOptions="EndAndExpand"/>
+                </Grid>
+            </StackLayout>
+        </yummy:PancakeView>
+    </ContentPage.Content>
+</ContentPage>
