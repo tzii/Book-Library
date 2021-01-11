@@ -17,6 +17,7 @@ namespace BookLibrary
             InitializeComponent();
             Routing.RegisterRoute(nameof(CategoryDetailPage), typeof(CategoryDetailPage));
             Routing.RegisterRoute(nameof(BookDetailPage), typeof(BookDetailPage));
+            Routing.RegisterRoute(nameof(ChapterDetailPage), typeof(ChapterDetailPage));
         }
     }
 }

@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using BookLibrary.Services;
 using BookLibrary.Models;
 using System.Threading.Tasks;
+using BookLibrary.Views;
 
 namespace BookLibrary.ViewModels
 {
@@ -137,7 +138,7 @@ namespace BookLibrary.ViewModels
         {
             if (chapter == null) return;
             if (!Owned) await Shell.Current.DisplayAlert("Thông Báo!", "Bạn chưa sở hữu quyển sách này.", "OK");
-            await Shell.Current.DisplayAlert("Thông Báo!", chapter._id, "OK");
+            else await Shell.Current.GoToAsync($"{nameof(ChapterDetailPage)}?{nameof(ChapterDetailViewModel.Id)}={chapter._id}&{nameof(ChapterDetailViewModel.BookName)}={Name}");
         }
         private async void onBackClicked()
         {
