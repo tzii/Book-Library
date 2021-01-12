@@ -16,6 +16,7 @@
         <ShellContent Title="Home" Icon="home.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}"/>
         <ShellContent Title="Categories" Icon="category.png" Route="CategoriesPage" ContentTemplate="{DataTemplate local:CategoriesPage}"/>
         <ShellContent Title="All books" Icon="books.png" Route="BooksPage" ContentTemplate="{DataTemplate local:BooksPage}"/>
+        <ShellContent Title="Reading" Icon="reading.png" ContentTemplate="{DataTemplate local:ReadingPage}"/>
         <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}"/>
     </TabBar>
 </Shell>

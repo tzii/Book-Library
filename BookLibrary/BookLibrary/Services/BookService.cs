@@ -50,5 +50,21 @@ namespace BookLibrary.Services
             var chapters = (List<Chapter>)JObject.Parse(str)["payload"].ToObject(typeof(List<Chapter>));
             return chapters;
         }
+        public static async Task<List<Book>> getLastRead()
+        {
+            var res = await HTTPService.Get("book/lastread");
+            if (res.StatusCode != HttpStatusCode.OK) return new List<Book>();
+            var str = await res.Content.ReadAsStringAsync();
+            var books = (List<Book>)JObject.Parse(str)["payload"].ToObject(typeof(List<Book>));
+            return books;
+        }
+        public static async Task<List<Book>> getOwnBooks()
+        {
+            var res = await HTTPService.Get("book/own");
+            if (res.StatusCode != HttpStatusCode.OK) return new List<Book>();
+            var str = await res.Content.ReadAsStringAsync();
+            var books = (List<Book>)JObject.Parse(str)["payload"].ToObject(typeof(List<Book>));
+            return books;
+        }
     }
 }

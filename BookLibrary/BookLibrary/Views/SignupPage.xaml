@@ -6,65 +6,90 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="BookLibrary.Views.SignupPage"
              Shell.TabBarIsVisible="False">
-    <ContentPage.Resources>
-        <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#28dbc5" Offset="0"/>
-            <GradientStop Color="#83c9f5" Offset="1"/>
-        </LinearGradientBrush>
-    </ContentPage.Resources>
     <ContentPage.Content>
-        <yummy:PancakeView Background="{StaticResource BlueGradient}">
+        <Grid>
+            <yummy:PancakeView BackgroundColor="#fdd978">
+                <Label Text="Đăng Nhập" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0"/>
+            </yummy:PancakeView >
+            <yummy:PancakeView BackgroundColor="#f5f9fc" Margin="0,130,0,0" 
+                               Shadow="{yummy:ShadowMarkup }" CornerRadius="20,20,0,0">
             <StackLayout>
-                <ffsvg:SvgCachedImage Source="login.svg" HeightRequest="80" Margin="0,40,0,100"/>
-                <components:CustomEntry 
-                    Text ="{Binding Name}"
-                    TextColor="white"
-                    BorderWidth="2" 
-                    BorderColor="white"
-                    Placeholder="Tên" 
-                    PlaceholderColor="#dcebeb"
-                    CornerRadius="100"
-                    IsCurvedCornersEnabled="True"
-                    Margin="20,0"/>
-                <components:CustomEntry 
-                    Text ="{Binding Email}"
-                    TextColor="white"
-                    BorderWidth="2" 
-                    BorderColor="white"
-                    Placeholder="Địa chỉ Email" 
-                    PlaceholderColor="#dcebeb"
-                    CornerRadius="100"
-                    IsCurvedCornersEnabled="True"
-                    Margin="20,10,20,0"/>
-                <components:CustomEntry 
-                    Text="{Binding Password}"
-                    BorderWidth="2" 
-                    TextColor="white"
-                    BorderColor="white"
-                    Placeholder="Mật khẩu" 
-                    PlaceholderColor="#dcebeb"
-                    CornerRadius="100" 
-                    Margin="20,10,20,0"/>
+                    <Frame CornerRadius="30"
+                             Padding="0"
+                             HasShadow="False"
+                             Margin="35, 40, 35, 20">
+                        <components:CustomEntry 
+                                        Text ="{Binding Name}"
+                                        Placeholder="Tên"
+                                      BorderColor="WhiteSmoke"
+                                      BackgroundColor="WhiteSmoke"
+                                      FontSize="15"
+                                      HeightRequest="50"
+                                      Image="icon_user"
+                                      ImageAlignment="Right"
+                                      ImageWidth="20"
+                                      ImageHeight="20"
+                                      CornerRadius="30"
+                                      TabIndex="1"
+                                      IsCurvedCornersEnabled="True"/>
+                    </Frame>
+                    <Frame CornerRadius="30"
+                             Padding="0"
+                             HasShadow="False"
+                             Margin="35, 0, 35, 20">
+                        <components:CustomEntry 
+                                        Text ="{Binding Email}"
+                                        Placeholder="Địa chỉ Email"
+                                      BorderColor="WhiteSmoke"
+                                      BackgroundColor="WhiteSmoke"
+                                      FontSize="15"
+                                      HeightRequest="50"
+                                      Image="email"
+                                      ImageAlignment="Right"
+                                      ImageWidth="20"
+                                      ImageHeight="20"
+                                      CornerRadius="30"
+                                      TabIndex="1"
+                                      IsCurvedCornersEnabled="True"/>
+                    </Frame>
+                    <Frame CornerRadius="30"
+                             Padding="0"
+                             HasShadow="False"
+                             Margin="35, 0, 35, 20">
+                        <components:CustomEntry 
+                            Text="{Binding Password}"
+                            Placeholder="Password"
+                                      BorderColor="WhiteSmoke"
+                                      BackgroundColor="WhiteSmoke"
+                                      FontSize="15"
+                                      HeightRequest="50"
+                                      Image="key"
+                                      ImageAlignment="Right"
+                                      ImageWidth="20"
+                                      ImageHeight="20"
+                                      CornerRadius="30"
+                                      IsCurvedCornersEnabled="True"/>
+                    </Frame>
                 <Button Command="{Binding SignupCommand}"
                         Text="Đăng Kí" 
-                        BackgroundColor="white" 
-                        CornerRadius="100" 
-                        Margin="20,50,20,0" 
+                        BackgroundColor="#fdd978" 
+                        CornerRadius="15" 
+                        Margin="35,20,35,0" 
                         TextTransform="None" 
-                        TextColor="#83c9f5" 
+                        TextColor="#f5f9fc" 
                         FontAttributes="Bold"/>
                 <ActivityIndicator IsRunning="{Binding IsBusy}" />
                 <Grid VerticalOptions="EndAndExpand">
                     <Button Text="Đăng Nhập" 
                             Command="{Binding SigninViewComand}"
-                            TextColor="#dcebeb"
+                            TextColor="#83c9f5"
                             FontAttributes="Bold"
                             TextTransform="None"
                             FontSize="12"
                             BackgroundColor="Transparent"
                             HorizontalOptions="StartAndExpand"/>
                     <Button Text="Trợ Giúp?"
-                            TextColor="#dcebeb"
+                            TextColor="#83c9f5"
                             FontAttributes="Bold"
                             TextTransform="None"
                             FontSize="12" 
@@ -72,6 +97,7 @@
                             HorizontalOptions="EndAndExpand"/>
                 </Grid>
             </StackLayout>
-        </yummy:PancakeView>
+            </yummy:PancakeView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
