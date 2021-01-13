@@ -4,6 +4,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:model="clr-namespace:BookLibrary.ViewModels"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="BookLibrary.Views.HomePage">
     <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
         <ScrollView BackgroundColor="#f5f9fc">
@@ -104,6 +105,9 @@
                                             </StackLayout>
                                             <StackLayout Margin="10">
                                                 <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <ffsvg:SvgCachedImage Source="list.svg" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="30" Margin="10"/>
                                             </StackLayout>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer NumberOfTapsRequired="1"

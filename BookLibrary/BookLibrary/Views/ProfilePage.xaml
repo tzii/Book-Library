@@ -9,7 +9,7 @@
             <yummy:PancakeView HeightRequest="200" Background="avatar.png">
                 <Image Source="cover.jpg" VerticalOptions="Start" />
             </yummy:PancakeView>
-            <yummy:PancakeView Margin="0,180,0,0" BackgroundColor="white" CornerRadius="20,20,0,0"
+            <yummy:PancakeView Margin="0,180,0,0" BackgroundColor="#f5f9fc" CornerRadius="20,20,0,0"
                                Shadow="{yummy:ShadowMarkup Color=#FF0000, Offset='10,10'}" >
                 <StackLayout Margin="0,100,0,0">
                     <Label Text="{Binding Balance,StringFormat='{0:N0} VNĐ'}"
@@ -40,8 +40,11 @@
                                Border="{yummy:BorderMarkup Color=#fdd978, Thickness='10'}">
                 <Image Source="avatar.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
             </yummy:PancakeView>
-            <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="50" Margin="10" 
-                                 VerticalOptions="Start" HorizontalOptions="End" Command="{Binding LogoutClicked}"/>
+            <yummy:PancakeView HorizontalOptions="End" VerticalOptions="Start" Margin="15"
+                        Shadow="{yummy:ShadowMarkup }" CornerRadius="25">
+                <Button ImageSource="logout.png" Command="{Binding LogoutClicked}" VerticalOptions="Start" HorizontalOptions="End" BackgroundColor="#fdd978"
+                                 WidthRequest="50" HeightRequest="50" CornerRadius="25"/>
+            </yummy:PancakeView>
         </Grid>
     </RefreshView>
 </ContentPage>

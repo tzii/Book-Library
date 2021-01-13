@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <Grid>
             <yummy:PancakeView BackgroundColor="#fdd978">
-                <Label Text="Đăng Nhập" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0"/>
+                <Label Text="Đăng Kí" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0"/>
             </yummy:PancakeView >
             <yummy:PancakeView BackgroundColor="#f5f9fc" Margin="0,130,0,0" 
                                Shadow="{yummy:ShadowMarkup }" CornerRadius="20,20,0,0">

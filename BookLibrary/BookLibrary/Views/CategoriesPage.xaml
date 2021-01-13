@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:model="clr-namespace:BookLibrary.ViewModels"
+             xmlns:model="clr-namespace:BookLibrary.ViewModels" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="BookLibrary.Views.CategoriesPage">
     <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
         <StackLayout BackgroundColor="#f5f9fc">
@@ -26,6 +27,9 @@
                                     </StackLayout>
                                     <StackLayout Margin="10">
                                         <Label Text="{Binding name}" TextColor="White" VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <ffsvg:SvgCachedImage Source="list.svg" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="30" Margin="10"/>
                                     </StackLayout>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"

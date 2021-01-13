@@ -142,9 +142,6 @@
     <AndroidResource Include="Resources\drawable\login.svg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logout.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\profile.png" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\list.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

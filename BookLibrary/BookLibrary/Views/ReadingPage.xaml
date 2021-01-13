@@ -6,51 +6,52 @@
              xmlns:model="clr-namespace:BookLibrary.ViewModels"
              x:Class="BookLibrary.Views.ReadingPage">
     <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPage}">
-        <ScrollView BackgroundColor="#f5f9fc">
             <StackLayout>
-                <StackLayout BackgroundColor="#fdd978">
-                    <Label Text="Reading" FontSize="Large" FontAttributes="Bold" Margin="15,20,15,0"/>
-                    <CarouselView ItemsSource="{Binding LastRead}" HeightRequest="250" PeekAreaInsets="20">
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Padding="10,10,10,0">
-                                    <yummy:PancakeView 
-                                                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                                                   Shadow="{yummy:ShadowMarkup }"
-                                                   CornerRadius="20" Border="{yummy:BorderMarkup Color=#ebebeb, Thickness='3'}">
-                                        <Grid ColumnSpacing="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="130"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout VerticalOptions="Fill" BackgroundColor="black">
-                                                <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
-                                                            Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
-                                            </StackLayout>
-                                            <StackLayout Grid.Column="1" BackgroundColor="#f5f9fc" Padding="10">
-                                                <Label Text="{Binding name}" FontAttributes="Bold" FontSize="20"/>
-                                                <Label Text="Đọc Tiếp ..." VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="#1c73d7"/>
-                                            </StackLayout>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:ReadingViewModel}}, Path=BookClicked}"		
-                                            CommandParameter="{Binding .}">
-                                                </TapGestureRecognizer>
-                                            </Grid.GestureRecognizers>
-                                        </Grid>
-                                    </yummy:PancakeView>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
-                </StackLayout>
                 <StackLayout>
                     <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding Own}" 
                             ItemsLayout="VerticalGrid, 2" VerticalScrollBarVisibility="Always" 
-                            ItemSizingStrategy="MeasureFirstItem">
+                            ItemSizingStrategy="MeasureFirstItem" BackgroundColor="#f5f9fc">
                         <CollectionView.Header>
                             <ContentView>
+                            <StackLayout>
+                                <StackLayout BackgroundColor="#fdd978">
+                                    <Label Text="Reading" FontSize="Large" FontAttributes="Bold" Margin="15,20,15,-30"/>
+                                    <CarouselView ItemsSource="{Binding LastRead}" HeightRequest="250" PeekAreaInsets="20">
+                                        <CarouselView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout Padding="10,0,10,-30">
+                                                    <yummy:PancakeView 
+                                                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                                   Shadow="{yummy:ShadowMarkup }"
+                                                   CornerRadius="20" Border="{yummy:BorderMarkup Color=#ebebeb, Thickness='3'}">
+                                                        <Grid ColumnSpacing="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="130"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackLayout VerticalOptions="Fill" BackgroundColor="black">
+                                                                <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" Opacity="0.7"
+                                                            Source="{Binding image}" LoadingPlaceholder="loading.png" ErrorPlaceholder="err.png"/>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Column="1" BackgroundColor="#f5f9fc" Padding="10">
+                                                                <Label Text="{Binding name}" FontAttributes="Bold" FontSize="20"/>
+                                                                <Label Text="Đọc Tiếp..." VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="#1c73d7"/>
+                                                            </StackLayout>
+                                                            <Grid.GestureRecognizers>
+                                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type model:ReadingViewModel}}, Path=BookClicked}"		
+                                            CommandParameter="{Binding .}">
+                                                                </TapGestureRecognizer>
+                                                            </Grid.GestureRecognizers>
+                                                        </Grid>
+                                                    </yummy:PancakeView>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </CarouselView.ItemTemplate>
+                                    </CarouselView>
+                                </StackLayout>
                                 <Label Text="Your Own" FontSize="Large" FontAttributes="Bold" Margin="15,20,15,20"/>
+                            </StackLayout>
                             </ContentView>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
@@ -79,6 +80,5 @@
                     </CollectionView>
                 </StackLayout>
             </StackLayout>
-        </ScrollView>
     </RefreshView>
 </ContentPage>
