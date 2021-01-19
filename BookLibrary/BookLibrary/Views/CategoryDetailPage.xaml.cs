@@ -12,16 +12,22 @@ namespace BookLibrary.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoryDetailPage : ContentPage
     {
+        private bool firstLoad;
         private CategoryDetailViewModel _model;
         public CategoryDetailPage()
         {
             InitializeComponent();
             BindingContext = _model = new CategoryDetailViewModel();
+            firstLoad = true;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _model.OnAppearing();
+            if (firstLoad)
+            {
+                _model.OnAppearing();
+                firstLoad = false;
+            }
         }
     }
 }

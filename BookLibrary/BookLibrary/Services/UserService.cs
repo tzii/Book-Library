@@ -104,7 +104,9 @@ namespace BookLibrary.Services
             var status = JObject.Parse(str)["status"].ToString();
             var msg = JObject.Parse(str)["msg"].ToString();
             if (status == "err") return new Tuple<bool, string>(false, msg);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             LoadInfo();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             return new Tuple<bool, string>(true, msg);
         }
     }

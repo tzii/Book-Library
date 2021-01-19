@@ -12,16 +12,22 @@ namespace BookLibrary.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        private bool firstLoad;
         private HomeViewModel _model;
         public HomePage()
         {
             InitializeComponent();
             BindingContext = _model = new HomeViewModel();
+            firstLoad = true;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _model.OnAppearing();
+            if (firstLoad)
+            {
+                _model.OnAppearing();
+                firstLoad = false;
+            }
         }
     }
 }
