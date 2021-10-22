@@ -31,7 +31,7 @@ namespace BookLibrary.Services
         public static void Settings()
         {
             client = new HttpClient();
-            URL = "https://booklibrary-ie307.herokuapp.com/api/";
+            URL = "https://booklibary.herokuapp.com/api/";
             JsonType = "application/json";
             if (Token != "") AddAthencationToken(Token);
         }
